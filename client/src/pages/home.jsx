@@ -43,17 +43,21 @@ export default function Home() {
         </button>
       )}
 
-      <div className="flex flex-wrap justify-center gap-4 mb-6">
+      <div className="flex flex-wrap justify-center gap-6 mb-6">
         {pokemonList.map((pokemon, index) => (
-          <div key={index} className="flex flex-col items-center gap-2">
+          <div
+            key={index}
+            className="bg-white p-4 rounded-lg shadow-lg w-48 flex flex-col items-center text-center border border-gray-200"
+          >
             <img
               src={pokemon.sprites.front_default}
               alt={pokemon.name}
-              className="w-16 h-16"
+              className="w-16 h-16 mb-2"
             />
-            <span>{pokemon.name}</span>
+            <span className="font-semibold text-lg">{pokemon.name}</span>
+            <p className="text-sm text-gray-500">{pokemon.types.map(t => t.type.name).join(', ')}</p>
             <button
-              className="bg-green-500 text-white px-4 py-2 rounded mt-2"
+              className="bg-green-500 text-white px-4 py-2 rounded mt-4 hover:bg-green-600"
               onClick={() => handleAddToRoster(pokemon)}
             >
               Add to Roster
@@ -64,11 +68,15 @@ export default function Home() {
 
       <div className="mt-6">
         <h3 className="text-xl font-semibold">Your Roster</h3>
-        <ul className="flex flex-wrap gap-4 mt-4">
+        <ul className="flex flex-wrap justify-center gap-6 mt-4">
           {roster.map((pokemon, index) => (
-            <li key={index} className="flex items-center gap-2">
-              <img src={pokemon.sprite} alt={pokemon.name} className="w-12 h-12" />
-              <span>{pokemon.name}</span>
+            <li
+              key={index}
+              className="bg-white p-4 rounded-lg shadow-lg w-48 flex flex-col items-center text-center border border-gray-200"
+            >
+              <img src={pokemon.sprite} alt={pokemon.name} className="w-16 h-16 mb-2" />
+              <span className="font-semibold text-lg">{pokemon.name}</span>
+              <p className="text-sm text-gray-500">{pokemon.types.join(', ')}</p>
             </li>
           ))}
         </ul>
