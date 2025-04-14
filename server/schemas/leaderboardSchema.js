@@ -1,27 +1,28 @@
-import mongoose from 'mongoose';
+import { Schema, model } from 'mongoose';
 import { config } from "dotenv";
+
 
 config();
 
-const leaderboardSchema = new mongoose.Schema({
+const leaderboardSchema = new Schema(
+    {
   userName: {
-    type: String,
-    required: [true, 'Enter your name']
-  },
-  pokemonName: {
-    type: String,
-    required: [true, 'Enter the name of your Pokemon']
-  },
+    type: Schema.Types.user_name, 
+    ref: 'User', 
+    required: true
+    },
   score: {
-    type: String,
-    required: [true, 'Update your Score']
+    type: Schema.Types.user_score,
+    ref: 'User'
   },
   createdAt: {
     type: Date,
     default: Date.now
   }
-});
+},
+  {
+    timestamps: true,
+  }
+);
 
-const Leaderboard = mongoose.model("Leaderboard", leaderboardSchema);
-
-export default Leaderboard;
+export default model( "Leaderboard", leaderboardSchema);
