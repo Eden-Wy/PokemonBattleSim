@@ -1,5 +1,6 @@
 import User from "../schemas/userSchema.js";
 import { CustomError } from "../utils/errorHandler.js";
+import asyncHandler from '../utils/asyncHandler.js';
 
 export const getAllUsers = async (req, res, next) => {
   try {
@@ -13,7 +14,7 @@ export const getAllUsers = async (req, res, next) => {
 export const getUserById = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const user = await User.findByPk(id);
+    const user = await User.findById(id);
     if (!user) {
       return next(new CustomError("User not found", 404));
     }
@@ -38,7 +39,7 @@ export const updateUser = async (req, res, next) => {
     const { id } = req.params;
     const { user_name, user_email, user_password } = req.body;
     await User.update({ user_name, user_email, user_password }, { where: { id } });
-    const updatedUser = await User.findByPk(id);
+    const updatedUser = await User.findById(id);
     if (!updatedUser) {
       return next(new CustomError("User not found", 404));
     }
@@ -51,7 +52,7 @@ export const updateUser = async (req, res, next) => {
 export const deleteUser = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const user = await User.findByPk(id);
+    const user = await User.findById(id);
     if (!user) {
       return next(new CustomError("User not found", 404));
     }
