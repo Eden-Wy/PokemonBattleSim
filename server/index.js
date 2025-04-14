@@ -1,31 +1,41 @@
-import express from "express";
+import express from 'express';
 import cors from "cors";
 import { config } from "dotenv";
 import { errorHandler } from "./utils/errorHandler.js";
-import userRoutes from "./routes/userRoutes.js";
-import orderRoutes from "./routes/orderRoutes.js";
-import productRoutes from "./routes/productRoutes.js";
-import categoryRoutes from "./routes/categoryRoutes.js";
+import userRoutes from "./routes/userRoutes.js"
+import leaderboardRoutes from "./routes/leaderboardRoutes.js";
+import mongoose from 'mongoose';
+import bodyParser from 'body-parser';
+import './database/mongoDB.js';
 
 config();
 
-const app = express();
-const PORT = process.env.PORT;
+//console.log('Environment Variables:', process.env); //To print everythign that's happening, I guess - keep commented out as long as everything works, its block of text is scawwy ＞︿＜
+console.log('MONGODB_URI:', process.env.MONGODB_URI); 
 
-app.use(cors({origin: "*"}));
+const app = express();
+const PORT = process.env.PORT || 8080; // default port if nothing else is given
+
+app.use(cors({ origin: "*" }));
 app.use(express.json());
+app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
 app.use("/users", userRoutes);
-app.use("/products", productRoutes);
-app.use("/categories", categoryRoutes);
-app.use("/orders", orderRoutes);
+app.use("/leaderboard", leaderboardRoutes);
 
 app.use(errorHandler);
 
-app.listen(PORT, () => {
-  console.log(`✅ Server is 🏃‍♂️ on port ${PORT}`);
-});
+//Mongoose begins
+//mongoose.connect(process.env.MONGODB_URI).then(() => {
+//  console.log('Connected to MongoDB');
+//  app.listen(PORT, () => {
+//    console.log(`✅ Server is 🏃‍♂️ on port ${PORT}`);
+//  });
+//}).catch(error => {
+//  console.error('MongoDB connection error:', error);
+//});
+//Mongoose ends

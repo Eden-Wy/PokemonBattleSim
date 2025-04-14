@@ -1,46 +1,39 @@
-import { Sequelize, DataTypes } from "sequelize";
+import mongoose from 'mongoose';
 import { config } from "dotenv";
 
 config();
 
-const sequelize = new Sequelize(process.env.DATABASE_URL, {
-  dialect: "postgres",
-  logging: false,
-});
-
-const User = sequelize.define(
-  "User",
+const userSchema = new mongoose.Schema(
   {
     user_name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1, 20],
-      },
+      type: String,
+      required: true,
+      minlength: 1,
+      maxlength: 20,
     },
     user_email: {
-      type: DataTypes.STRING,
-      allowNull: false,
+      type: String,
+      required: true,
     },
     user_password: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: true,
-        len: [1, 100],
-      },
+      type: String,
+      required: true,
+      minlength: 1,
+      maxlength: 100,
     },
+    user_score: {
+      type: String,
+      minlength: 1,
+      maxlength: 99999,
+    }
   },
-  {
-    tableName: "user",
-    timestamps: false,
-    underscored: true,
-  }
+//  {
+//    tableName: "user",
+//    timestamps: false,
+//    underscored: true,
+//  }
 );
-sequelize.sync();
-// sequelize
-//   .sync({ force: true })
-//   .then(() => console.log("✅ Database synced (force: true)"))
-//   .catch((err) => console.error("❌ Sync failed:", err));
+
+const User = mongoose.model("User", userSchema);
 
 export default User;
