@@ -17,4 +17,4 @@ async function connectToDatabase() {
 
 connectToDatabase();
 
-export { mongoose };
+export { mongoose }; 
