@@ -1,6 +1,6 @@
 //Fetchig Pokemon Data from pokeapi
 export const pokeAPI = async () => {
-    const url = "https://pokeapi.co/api/v2/pokemon?limit=40";
+    const url = "https://pokeapi.co/api/v2/pokemon?limit=150";
     try {
       const response = await fetch(url);
       if (!response.ok) {
