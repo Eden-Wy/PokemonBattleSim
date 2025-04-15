@@ -1,6 +1,5 @@
 import User from "../schemas/userSchema.js";
 import { CustomError } from "../utils/errorHandler.js";
-import asyncHandler from '../utils/asyncHandler.js';
 
 export const getAllUsers = async (req, res, next) => {
   try {

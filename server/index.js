@@ -5,19 +5,20 @@ import { errorHandler } from "./utils/errorHandler.js";
 import userRoutes from "./routes/userRoutes.js"
 import leaderboardRoutes from "./routes/leaderboardRoutes.js";
 import mongoose from 'mongoose';
-import bodyParser from 'body-parser';
+// import bodyParser from 'body-parser';
+import './database/mongoDB.js'
 
 config();
 
 //console.log('Environment Variables:', process.env); //To print everythign that's happening, I guess - keep commented out as long as everything works, its block of text is scawwy ＞︿＜
-console.log('MONGODB_URI:', process.env.MONGODB_URI); 
+console.log('DATABASE_URI:', process.env.DATABASE_URI); 
 
 const app = express();
 const PORT = process.env.PORT || 8080; // default port if nothing else is given
 
 app.use(cors({ origin: "*" }));
 app.use(express.json());
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
   res.send("Hello World! The server is up and running!");
@@ -26,9 +27,9 @@ app.get("/", (req, res) => {
 app.use("/users", userRoutes);
 app.use("/leaderboard", leaderboardRoutes);
 
-app.get('*', (req, res) => {
-  res.status(404).json({ message: 'page not found!' });
-});
+// app.get('*', (req, res) => {
+//   res.status(404).json({ message: 'page not found!' });
+// });
 
 app.use(errorHandler);
 app.listen(PORT, () => {

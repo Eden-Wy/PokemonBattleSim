@@ -16,8 +16,7 @@ const userSchema = new Schema(
       type: String,
       required: true,
       unique: true,
-      match: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, // Regex for email validation
-      
+      match: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, // Regex for email validation      
     },
     user_password: {
       type: String,
@@ -34,8 +33,8 @@ const userSchema = new Schema(
     },
     user_score: {
       type: Number, //Declare Number for Integer
-      minlength: 1,
-      maxlength: 99999,
+      min: 0,
+      max: 99999,
     }
   },
   //EDEN: for DB requests:
@@ -45,7 +44,7 @@ const userSchema = new Schema(
       virtuals: true,
       versionKey: false,
       transform: (doc, ret) => {
-        delete ret.password; //Prevents password from being fetched with user info
+        delete ret.user_password; //Prevents password from being fetched with user info
         return ret;
       },
     },
@@ -53,7 +52,7 @@ const userSchema = new Schema(
       virtuals: true,
       versionKey: false,
       transform: (doc, ret) => {
-        delete ret.password;
+        delete ret.user_password;
         return ret;
       },
     },

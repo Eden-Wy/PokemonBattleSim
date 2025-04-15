@@ -3,11 +3,11 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const MONGODB_URI = process.env.MONGODB_URI;
+const DATABASE_URI = process.env.DATABASE_URI;
 
 async function connectToDatabase() {
     try {
-        await mongoose.connect(MONGODB_URI);
+        await mongoose.connect(DATABASE_URI);
         console.log('MongoDB is connected...');
     } catch (err) {
         console.error('Unable to connect to the database:', err);

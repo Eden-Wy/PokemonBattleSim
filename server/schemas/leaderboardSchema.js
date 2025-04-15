@@ -6,16 +6,16 @@ config();
 
 const leaderboardSchema = new Schema(
     {
-  userName: {
-    type: Schema.Types.user_name, 
-    ref: 'User', 
-    required: true
-    },
+      userId: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+  // userName: {
+  //   type: Schema.Types.user_name, 
+  //   ref: 'User', 
+  //   required: true
+  //   },
   score: {
-    type: Schema.Types.user_score,
-    ref: 'User'
+    type: Number,
   },
-  createdAt: {
+  latestMatch: {
     type: Date,
     default: Date.now
   }

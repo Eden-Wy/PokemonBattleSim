@@ -1,4 +1,5 @@
-import { Leaderboard } from "../schemas/index.js";
+// import { Leaderboard } from "../schemas/index.js";
+import Leaderboard from "../schemas/leaderboardSchema.js";
 import { CustomError } from "../utils/errorHandler.js";
 
 export const getLeaderboard = async (req, res, next) => {

@@ -1,30 +1,31 @@
-import { Schema, model } from 'mongoose';
-import { config } from "dotenv";
+// import { Schema, model } from 'mongoose';
+// import { config } from "dotenv";
 
 
-config();
+// config();
 
-const userHistorySchema = new Schema({
-  userName: {
-    type: String,
-    required: true
-  },
-  chosenPokemon: {
-    type: String,
-    required: [true, 'Enter the name of your favoritePokemon']
-  },
-  enemyPokemon: {
-    type: String,
-    required: [true, 'Enter the name of your favoritePokemon']
-  },
-  outcome: {
-    type: String,
-    required: [true, 'Update your Score']
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now
-  }
-});
+// const userHistorySchema = new Schema({
+//   userName: {
+//     type: String,
+//     ref: "User",
+//     required: true
+//   },
+//   userPokemon: {
+//     type: String,
+//     required: [true, 'Enter the name of your favoritePokemon']
+//   },
+//   enemyPokemon: {
+//     type: String,
+//     required: [true, 'Enter the name of your favoritePokemon']
+//   },
+//   outcome: {
+//     type: String,
+//     required: [true, 'Update your Score']
+//   },
+//   createdAt: {
+//     type: Date,
+//     default: Date.now
+//   }
+// });
 
-export default model("userHistory", userHistorySchema);
+// export default model("userHistory", userHistorySchema);
