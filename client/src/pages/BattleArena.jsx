@@ -99,7 +99,7 @@ export default function BattleArena() {
       )}
 
       {/* Countdown & "Go!" display */}
-      <div className="text-3xl font-bold mb-4">
+      <div className="text-3xl font-bold text-black mb-4">
         {isBattleInProgress ? countdown : ''}
       </div>
 
@@ -112,7 +112,7 @@ export default function BattleArena() {
       </button>
 
       {result && (
-        <div className="mt-4 text-lg font-bold">
+        <div className="mt-4 text-lg font-bold text-black">
           Result: {result}
         </div>
       )}
