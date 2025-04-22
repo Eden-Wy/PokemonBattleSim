@@ -20,30 +20,14 @@ const AuthForm = ({
         </div>
       )}
 
-      {isRegistering && (
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text">Name</span>
-          </label>
-          <input
-            type="text"
-            value={formData.name}
-            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            placeholder="Please enter your name"
-            className="w-full input input-bordered"
-            required
-          />
-        </div>
-      )}
-
       <div className="form-control">
         <label className="label">
           <span className="label-text">Email</span>
         </label>
         <input
           type="email"
-          value={formData.email}
-          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+          value={formData.user_email}
+          onChange={(e) => setFormData({ ...formData, user_email: e.target.value })}
           placeholder="Please enter your e-mail"
           className="w-full input input-bordered"
           required
@@ -66,23 +50,6 @@ const AuthForm = ({
         />
       </div>
 
-// Optional: select a pokemon as profile picture
-      {/* {isRegistering && (
-        <div className="form-control">
-          <label className="label">
-            <span className="label-text">Profile Image URL</span>
-          </label>
-          <input
-            type="text"
-            value={formData.image}
-            onChange={(e) =>
-              setFormData({ ...formData, image: e.target.value })
-            }
-            placeholder="Image URL"
-            className="w-full input input-bordered"
-          />
-        </div>
-      )} */}
 
       <button type="submit" className="w-full btn btn-primary">
         {isRegistering ? 'Register' : 'Login'}

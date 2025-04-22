@@ -66,18 +66,18 @@ export default function BattleArena() {
 
   return (
     <div className="text-center">
-      <h2 className="text-2xl font-bold mb-4">Choose your Pokémon:</h2>
+      <h2 className="text-2xl text-black font-bold mb-4">Choose your Pokémon:</h2>
 
       <div className="flex flex-wrap justify-center gap-6 mb-6">
         {roster.map((p, i) => (
           <button
             key={i}
-            className={`bg-white p-4 rounded-lg shadow-lg w-48 flex flex-col items-center text-center border border-gray-200 ${selected?.name === p.name ? 'bg-blue-500 text-white' : ''}`}
+            className={`bg-white p-4 rounded-lg shadow-lg w-48 flex flex-col items-center text-center border border-gray-200 ${selected?.name === p.name ? 'bg-blue-500 text-black' : ''}`}
             onClick={() => setSelected(p)}
           >
             <img src={p.sprite} alt={p.name} className="w-16 h-16 mb-2" />
             <span className="font-semibold text-lg">{p.name}</span>
-            <p className="text-sm text-gray-500">{p.types.join(', ')}</p>
+            <p className="text-sm text-black">{p.types.join(', ')}</p>
           </button>
         ))}
       </div>
@@ -91,9 +91,9 @@ export default function BattleArena() {
 
       {/* Enemy Pokemon */}
       {enemy && (
-        <div className="bg-white p-4 rounded-lg shadow-lg w-48 mx-auto mb-4">
+        <div className="bg-blue-300 p-4 rounded-lg shadow-lg w-48 mx-auto mb-4">
           <h3 className="font-semibold">{enemy.name}</h3>
-          <p className="text-sm text-gray-500">Types: {enemy.types.join(', ')}</p>
+          <p className="text-sm text-black">Types: {enemy.types.join(', ')}</p>
           <img src={enemy.sprite} alt={enemy.name} className="w-16 h-16 mx-auto mb-2" />
         </div>
       )}

@@ -36,7 +36,7 @@ export default function Home() {
 
       {!username && (
         <button
-          className="bg-blue-500 text-white px-4 py-2 rounded mb-4"
+          className="bg-blue-500 text-black px-4 py-2 rounded mb-4"
           onClick={() => setShowModal(true)}
         >
           Sign Up / Log In
@@ -47,7 +47,7 @@ export default function Home() {
         {pokemonList.map((pokemon, index) => (
           <div
             key={index}
-            className="bg-white p-4 rounded-lg shadow-lg w-48 flex flex-col items-center text-center border border-gray-200"
+            className="bg-blue-300 p-4 rounded-lg shadow-lg w-48 flex flex-col items-center text-center border border-gray-200"
           >
             <img
               src={pokemon.sprites.front_default}
@@ -55,9 +55,9 @@ export default function Home() {
               className="w-16 h-16 mb-2"
             />
             <span className="font-semibold text-lg">{pokemon.name}</span>
-            <p className="text-sm text-gray-500">{pokemon.types.map(t => t.type.name).join(', ')}</p>
+            <p className="text-sm text-black">{pokemon.types.map(t => t.type.name).join(', ')}</p>
             <button
-              className="bg-green-500 text-white px-4 py-2 rounded mt-4 hover:bg-green-600"
+              className="bg-green-500 text-black px-4 py-2 rounded mt-4 hover:bg-green-600"
               onClick={() => handleAddToRoster(pokemon)}
             >
               Add to Roster
@@ -76,7 +76,7 @@ export default function Home() {
             >
               <img src={pokemon.sprite} alt={pokemon.name} className="w-16 h-16 mb-2" />
               <span className="font-semibold text-lg">{pokemon.name}</span>
-              <p className="text-sm text-gray-500">{pokemon.types.join(', ')}</p>
+              <p className="text-sm text-black">{pokemon.types.join(', ')}</p>
             </li>
           ))}
         </ul>

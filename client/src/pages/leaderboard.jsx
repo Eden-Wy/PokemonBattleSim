@@ -11,7 +11,7 @@ export default function Leaderboard() {
 
   return (
     <div className="max-w-xl mx-auto">
-      <h2 className="text-2xl font-bold text-center mb-4">Leaderboard</h2>
+      <h2 className="text-2xl text-black font-bold text-center mb-4">Leaderboard</h2>
       <table className="w-full text-left bg-white rounded shadow">
         <thead>
           <tr className="bg-gray-100">

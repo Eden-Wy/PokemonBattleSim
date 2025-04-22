@@ -15,7 +15,7 @@ const Login = () => {
     const checkSession = async () => {
       try {
         const response = await axios.get(
-          `${ORIGIN_URL}/users/check-session`,
+          `${ORIGIN_URL}/api/v1/users/check-session`,
           {
             withCredentials: true,
           }
@@ -37,8 +37,8 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        `${ORIGIN_URL}/users/login`,
-        { email, password },
+        `${ORIGIN_URL}/api/v1/users/login`,
+        { user_email: email, user_password: password },
         { withCredentials: true }
       );
       setUser(response.data.user);
@@ -52,7 +52,7 @@ const Login = () => {
   const handleLogout = async () => {
     try {
       await axios.post(
-        `${ORIGIN_URL}/users/logout`,
+        `${ORIGIN_URL}/api/users/logout`,
         {},
         { withCredentials: true }
       );
@@ -69,7 +69,7 @@ const Login = () => {
         {user ? (
           <div className="text-center">
             <h2 className="mb-4 text-2xl font-semibold">
-              Welcome, {user.name}!
+              Welcome, {user.user_name}!
             </h2>
             <button onClick={handleLogout} className="w-full btn btn-primary">
               Logout
