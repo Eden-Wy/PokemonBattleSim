@@ -37,9 +37,9 @@ const Register = () => {
     formData.append('name', name);
     formData.append('email', email);
     formData.append('password', password);
-    if (image) {
-      formData.append('image', image);
-    }
+    // if (image) {
+    //   formData.append('image', image);
+    // }
 
     try {
       await axios.post(`${ORIGIN_URL}/users/register`, formData, {
@@ -97,22 +97,22 @@ const Register = () => {
           required
         />
 
-        <button
+        {/* <button
           type="button"
           onClick={handleImageUploadClick}
           className="w-full btn btn-secondary"
         >
           Upload Image
-        </button>
+        </button> */}
 
-        <input
+        {/* <input
           ref={fileInputRef}
           type="file"
           accept="image/*"
           onChange={handleImageChange}
           style={{ display: 'none' }}
-        />
-
+        /> */}
+{/* 
         {imagePreview && (
           <div className="mt-4">
             <img
@@ -121,7 +121,7 @@ const Register = () => {
               className="object-cover w-32 h-32 mx-auto rounded-full"
             />
           </div>
-        )}
+        )} */}
 
         <button type="submit" className="w-full btn btn-primary">
           Create User

@@ -86,7 +86,7 @@ export default function Home() {
         showModal={showModal}
         setShowModal={setShowModal}
         setUsername={setUsername}
-      />
+      /> 
     </div>
   );
 }
