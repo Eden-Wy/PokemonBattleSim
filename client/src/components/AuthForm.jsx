@@ -93,8 +93,8 @@ const AuthForm = ({
         onClick={toggleForm}
       >
         {isRegistering
-          ? 'Already have an account? Login'
-          : 'Do not have an account? Register'}
+          ? 'Do you have an account already? Login'
+          : 'You do not have an account yet? Register'}
       </p>
     </form>
   );
